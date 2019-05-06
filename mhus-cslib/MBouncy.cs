@@ -11,7 +11,7 @@ namespace mhuscslib
 {
     public class MBouncy
     {
-        public string EncryptRsa(string clearText, string publicKey)
+        public static string EncryptRsa(string clearText, string publicKey)
         {
             var bytesToEncrypt = Encoding.UTF8.GetBytes(clearText);
 
@@ -42,7 +42,7 @@ namespace mhuscslib
 
         }
 
-        public string DecryptRsa(string base64Input, string privateKey)
+        public static string DecryptRsa(string base64Input, string privateKey)
         {
             var bytesToDecrypt = Convert.FromBase64String(base64Input);
             RsaPrivateCrtKeyParameters key;
