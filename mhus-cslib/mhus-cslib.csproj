@@ -38,6 +38,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MBouncy.cs" />
+    <Compile Include="PemBlockModel.cs" />
+    <Compile Include="PemBlock.cs" />
+    <Compile Include="ParseException.cs" />
+    <Compile Include="MString.cs" />
+    <Compile Include="MCast.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
