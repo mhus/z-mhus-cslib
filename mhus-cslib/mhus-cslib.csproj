@@ -43,6 +43,7 @@
     <Compile Include="ParseException.cs" />
     <Compile Include="MString.cs" />
     <Compile Include="MCast.cs" />
+    <Compile Include="AssertationException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -41,7 +41,7 @@ namespace mhuscslib
             String n = block.Substring(0, p);
             if (n.Contains("\n") || n.Contains("\r"))
                 throw new ParseException("name contains line break " + n);
-            Name = n;
+            Name = n.Trim();
             block = block.Substring(p + 5);
 
             // find end
@@ -126,7 +126,7 @@ namespace mhuscslib
         public override string ToString()
         {
             StringBuilder o = new StringBuilder();
-            o.Append("-----BEGIN ").Append(Name).Append(" -----\n");
+            o.Append("-----BEGIN ").Append(Name).Append("-----\n");
             foreach (string key in parameters.Keys)
             {
                 string val = parameters[key];
@@ -139,7 +139,7 @@ namespace mhuscslib
             o.Append("\n");
             o.Append(GetEncodedBlock());
             o.Append("\n\n");
-            o.Append("-----END ").Append(Name).Append(" -----\n");
+            o.Append("-----END ").Append(Name).Append("-----\n");
             return o.ToString();
         }
 
@@ -153,7 +153,7 @@ namespace mhuscslib
                 b = b.Substring(BLOCK_WIDTH);
             }
             o.Append(b);
-            return b.ToString();
+            return o.ToString();
         }
 
         public string Rest { get => rest; }

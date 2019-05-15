@@ -47,8 +47,12 @@ namespace mhuscslib
 
             cipher.DoFinal(out2, len2);
 
-            return Encoding.GetString(out2);
+            string ret = Encoding.GetString(out2);
 
+            while (ret.Length > 0 && ret.EndsWith("\0", StringComparison.Ordinal))
+                ret = ret.Remove(ret.Length - 1);
+
+            return ret;
         }
 
         public static string EncryptRsa(string clearText, string publicKey)
