@@ -7,6 +7,7 @@ using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Crypto.Paddings;
+using System.Security.Cryptography;
 
 namespace mhuscslib
 {
@@ -14,6 +15,13 @@ namespace mhuscslib
     {
 
         static readonly Encoding Encoding = Encoding.UTF8;
+
+        public static string HashMd5(string text)
+        {
+            MD5 md5Hasher = MD5.Create();
+            byte[] md5Data = md5Hasher.ComputeHash(Encoding.GetBytes(text));
+            return BitConverter.ToString(md5Data).Replace("-", string.Empty).ToLower();
+        }
 
         public static string EncryptBlowfish(string secret, string key)
         {
