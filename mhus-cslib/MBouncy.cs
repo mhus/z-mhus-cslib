@@ -96,6 +96,11 @@ namespace mhuscslib
 
         public static string DecryptRsa(string base64Input, string privateKey)
         {
+            return DecryptRsa(base64Input, privateKey, 1024);
+        }
+
+        public static string DecryptRsa(string base64Input, string privateKey, int keyLength)
+        {
             var bytesToDecrypt = Convert.FromBase64String(base64Input);
             RsaPrivateCrtKeyParameters key;
             var decryptEngine = new Pkcs1Encoding(new RsaEngine());
@@ -107,7 +112,7 @@ namespace mhuscslib
                 decryptEngine.Init(false, key);
             }
 
-            var blockSize = 128;
+            var blockSize = keyLength / 1024 * 128;
 
             MemoryStream stream = new MemoryStream();
             var start = 0;
